@@ -82,14 +82,14 @@ class App extends Component {
 
   onDismiss(id) {
     const isNotId = item => item.objectID !== id;
-    const updateList = this.state.list.filter(isNotId);
-    this.setState({ list: updateList });
+    const updatedHits = this.state.result.hits.filter(isNotId);
+    this.setState({ result: { ...this.state.result, hits: updatedHits } });
   }
 
   render() {
     const { result, searchTerm } = this.state;
 
-    if (!result){
+    if (!result) {
       return null;
     }
 
@@ -100,7 +100,11 @@ class App extends Component {
             Search
           </Search>
         </div>
-        <Table list={result.hits} pattern={searchTerm} onDismiss={this.onDismiss} />
+        <Table
+          list={result.hits}
+          pattern={searchTerm}
+          onDismiss={this.onDismiss}
+        />
       </div>
     );
   }
