@@ -39,16 +39,41 @@ const list = [
 const isSearched = searchTerm => item =>
   item.title.toLowerCase().includes(searchTerm.toLowerCase());
 
+const DEFAULT_QUERY = "redux";
+const PATH_BASE = "https://hn.algolia.com/api/v1";
+const PATH_SEARCH = "/search";
+const PARAM_SEARCH = "query=";
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // list: list
       list,
-      searchTerm: ""
+      result: null,
+      searchTerm: DEFAULT_QUERY,
+      list2: ["eee"]
     };
     this.onDismiss = this.onDismiss.bind(this);
     this.onSearchChange = this.onSearchChange.bind(this);
+    this.fetchSearchTopStories = this.fetchSearchTopStories.bind(this);
+  }
+
+  setSearchTopStories(result) {
+    this.setState({ result });
+  }
+
+  fetchSearchTopStories(searchTerm) {
+    const url = `${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}`;
+    fetch(url)
+      .then(response => response.json())
+      .then(result => this.setSearchTopStories(result))
+      // .then(result => console.log(result))
+      .catch(e => console.log(e));
+  }
+
+  componentDidMount() {
+    const { searchTerm } = this.state;
+    this.fetchSearchTopStories(searchTerm);
   }
 
   onSearchChange(event) {
@@ -62,7 +87,12 @@ class App extends Component {
   }
 
   render() {
-    const { list, searchTerm } = this.state;
+    const { result, searchTerm } = this.state;
+
+    if (!result){
+      return null;
+    }
+
     return (
       <div className="page">
         <div className="interactions">
@@ -70,7 +100,7 @@ class App extends Component {
             Search
           </Search>
         </div>
-        <Table list={list} pattern={searchTerm} onDismiss={this.onDismiss} />
+        <Table list={result.hits} pattern={searchTerm} onDismiss={this.onDismiss} />
       </div>
     );
   }
