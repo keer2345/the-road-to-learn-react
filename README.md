@@ -99,3 +99,6 @@
 
 ### 客户端或服务端搜索
 - [React 中的合成事件](https://reactjs.org/docs/events.html)
+
+### 分页抓取
+- [Hacker News API 变量](https://hn.algolia.com/api)
