@@ -102,3 +102,5 @@
 
 ### 分页抓取
 - [Hacker News API 变量](https://hn.algolia.com/api)
+
+### 客户端缓存
