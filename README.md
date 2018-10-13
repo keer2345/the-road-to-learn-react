@@ -88,3 +88,11 @@
 - [ES6模板字符串](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
 - [原生 fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 - [React中获取数据](https://www.robinwieruch.de/react-fetching-data/)
+
+### 扩展操作符
+- [ES6 Object.assign()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
+- [ES6 数组的扩展操作符](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
+
+### 条件渲染
+- [React 条件渲染](https://facebook.github.io/react/docs/conditional-rendering.html)
+- [实现条件渲染的不同方法](https://www.robinwieruch.de/conditional-rendering-react/)
